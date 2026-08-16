@@ -1,0 +1,36 @@
+{
+  "name": "@deepseek-ai/dsh-pixel-art",
+  "description": "LLM-driven GDI+ text-to-image for DeepSeek Harness: the agent's own LLM writes a System.Drawing (GDI+) PowerShell script that the plugin renders with the built-in powershell.exe into a PNG, shown inline in the conversation (no external image API). Also serves previously generated pixel-art images.",
+  "version": "0.1.0",
+  "publishConfig": {
+    "access": "public"
+  },
+  "type": "module",
+  "main": "lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib/index.js"
+  ],
+  "keywords": [
+    "deepseek",
+    "deepseek-harness",
+    "dsh",
+    "dsh-plugin",
+    "image-generation",
+    "text-to-image",
+    "gdi",
+    "drawing",
+    "pixel-art"
+  ],
+  "license": "MIT",
+  "peerDependencies": {
+    "@deepseek-ai/dsh-tools": "^0.1.0-rc.6",
+    "@deepseek-ai/dsh-settings": "^0.1.0-rc.6",
+    "@deepseek-ai/dsh-llm": "^0.1.0-rc.6",
+    "@deepseek-ai/schemastery": "^3.18.1",
+    "@deepseek-ai/cordis": "^4.0.1"
+  }
+}
