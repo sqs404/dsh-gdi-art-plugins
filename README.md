@@ -61,7 +61,12 @@ DeepSeek Harness（DSH）插件：把"文生图"交给模型自己写 **Windows 
 | <img src="https://cdn.jsdelivr.net/gh/sqs404/dsh-gdi-art-plugins@main/examples/gdi-mushroom.png" width="256" alt="gdi-mushroom"> | `gdi-mushroom.png` 草地上的红蘑菇 |
 | <img src="https://cdn.jsdelivr.net/gh/sqs404/dsh-gdi-art-plugins@main/examples/gdi-landscape.png" width="256" alt="gdi-landscape"> | `gdi-landscape.png` 房子、太阳、树的风景 |
 
-**像素画引擎（旧版，已被 `draw_gdi` 取代，16×16 放大）**
+**像素画引擎（旧版，已被 `draw_gdi` 取代）**
+
+> 旧版引擎让 deepseek-v4-flash **一个像素一个像素地输出** 16×16 调色板网格来"画"图：
+> 模型要先逐格"读"出每个像素的颜色再生成，这种方式对 deepseek-v4-flash 来说**效果不行**
+> （模型不擅长逐像素输出，画出来的图很粗糙），因此被 GDI+ 引擎取代——
+> 改成让模型写绘图脚本、由渲染引擎落笔，效果明显更好。以下为旧引擎的存档示例：
 
 | 图片 | 说明 |
 |---|---|
