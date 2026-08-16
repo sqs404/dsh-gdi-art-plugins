@@ -1,9 +1,22 @@
-# DSH GDI+ 文生图插件（LLM 操控 GDI+ 生成本地图片）
+# DSH GDI+ 文生图插件（让 DeepSeek V4 Flash 勉强实现文生图）
+
+> ## ⭐ 核心亮点：不依赖任何其他大模型，即可让 deepseek-v4-flash 文生图
+>
+> DeepSeek V4 Flash（deepseek-v4-flash）本身**不支持原生图像生成**。本插件的思路是：
+> 让 deepseek-v4-flash **自己编写 Windows GDI+（System.Drawing）绘图脚本**，由系统自带的
+> `powershell.exe` 在本地渲染成 PNG——全程**只使用 deepseek-v4-flash 这一个模型**，
+> **不依赖任何其他大模型**（不需要 DALL·E、Stable Diffusion、Midjourney 等图像模型，
+> 也不需要任何外部图像 API），就能让它在对话里"画出"图片。
+>
+> 效果说明：这是"模型手绘"而非"模型生成"——构图、形状、配色由模型逐笔设计，
+> 所以**画面质量只能算"勉强可用"**（类似像素画/简笔画水平），但胜在：
+> **零额外依赖、零外部费用、完全本地渲染**。仓库 `examples/` 下的图片就是
+> deepseek-v4-flash 的真实输出。
 
 DeepSeek Harness（DSH）插件：把"文生图"交给模型自己写 **Windows GDI+（System.Drawing）** 绘图脚本，由系统自带的 `powershell.exe` 在本地渲染成 PNG，直接显示在对话里——不需要任何外部图像 API。
 
 ```
-你说"画一只棕色狗" → agent 调用 draw_gdi → 会话模型编写 System.Drawing 绘图脚本
+你说"画一只棕色狗" → agent 调用 draw_gdi → 会话模型（deepseek-v4-flash）编写 System.Drawing 绘图脚本
 → powershell.exe 执行 → GDI+ 本地渲染 → PNG 发布到对话内联显示
 ```
 
@@ -61,6 +74,7 @@ DeepSeek Harness（DSH）插件：把"文生图"交给模型自己写 **Windows 
 
 ## 工作原理与安全提示
 
+- **模型依赖**：`draw_gdi` 调用的是会话当前配置的模型（本项目验证环境为 deepseek-v4-flash）。它只请求这一个模型编写绘图脚本，**不会调用任何其他大模型**；整个生成链路中唯一的"AI"就是会话模型本身，其余全部是本地 PowerShell/GDI+ 渲染。
 - 模型输出一段 PowerShell + System.Drawing（GDI+）脚本；插件以当前用户权限运行 `powershell.exe`（`C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe`）执行它，输出 PNG 保存在 `$DSH_HOME/dsh-gdi-art/`。
 - 脚本渲染有 90 秒超时、64 KB 长度上限；产物会校验 PNG 签名和尺寸。
 - ⚠️ 该工具本质是让 LLM 在你本机以当前用户权限执行 PowerShell 代码，请仅在可信环境中使用；生成失败的脚本会反馈给模型重试。
