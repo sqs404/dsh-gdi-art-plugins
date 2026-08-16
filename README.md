@@ -35,6 +35,28 @@ DeepSeek Harness（DSH）插件：把"文生图"交给模型自己写 **Windows 
 - 设置 → 插件 → 插件配置 → 「像素画 / GDI+ 绘图」：启用开关、默认画布边长、最近生成图片预览。
 - 生成过程最多重试 3 次：每次把 powershell 的报错反馈给模型修正脚本。
 
+## 示例图片（由 DeepSeek V4 Flash 生成）
+
+仓库 `examples/` 下的所有图片均由 **DeepSeek V4 Flash（deepseek-v4-flash）** 模型在本机生成——模型负责设计构图与脚本，GDI+/像素引擎负责渲染，未使用任何外部图像 API。
+
+**GDI+ 引擎（当前，`draw_gdi` 工具，512×512）**
+
+| 图片 | 说明 |
+|---|---|
+| [gdi-dog.png](examples/gdi-dog.png) | 棕色垂耳狗 |
+| [gdi-cat.png](examples/gdi-cat.png) | 橙色小猫 |
+| [gdi-mushroom.png](examples/gdi-mushroom.png) | 草地上的红蘑菇 |
+| [gdi-landscape.png](examples/gdi-landscape.png) | 房子、太阳、树的风景 |
+
+**像素画引擎（旧版，已被 `draw_gdi` 取代，16×16 放大）**
+
+| 图片 | 说明 |
+|---|---|
+| [pixel-dog.png](examples/pixel-dog.png) | 像素小狗 |
+| [pixel-cat.png](examples/pixel-cat.png) | 像素小猫 |
+| [pixel-person.png](examples/pixel-person.png) | 像素小人 |
+| [pixel-mushroom.png](examples/pixel-mushroom.png) | 像素蘑菇 |
+
 ## 工作原理与安全提示
 
 - 模型输出一段 PowerShell + System.Drawing（GDI+）脚本；插件以当前用户权限运行 `powershell.exe`（`C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe`）执行它，输出 PNG 保存在 `$DSH_HOME/dsh-gdi-art/`。
