@@ -43,19 +43,21 @@ DeepSeek Harness（DSH）插件：把"文生图"交给模型自己写 **Windows 
 
 | 图片 | 说明 |
 |---|---|
-| [gdi-dog.png](examples/gdi-dog.png) | 棕色垂耳狗 |
-| [gdi-cat.png](examples/gdi-cat.png) | 橙色小猫 |
-| [gdi-mushroom.png](examples/gdi-mushroom.png) | 草地上的红蘑菇 |
-| [gdi-landscape.png](examples/gdi-landscape.png) | 房子、太阳、树的风景 |
+| <img src="https://cdn.jsdelivr.net/gh/sqs404/dsh-gdi-art-plugins@main/examples/gdi-dog.png" width="256" alt="gdi-dog"> | `gdi-dog.png` 棕色垂耳狗 |
+| <img src="https://cdn.jsdelivr.net/gh/sqs404/dsh-gdi-art-plugins@main/examples/gdi-cat.png" width="256" alt="gdi-cat"> | `gdi-cat.png` 橙色小猫 |
+| <img src="https://cdn.jsdelivr.net/gh/sqs404/dsh-gdi-art-plugins@main/examples/gdi-mushroom.png" width="256" alt="gdi-mushroom"> | `gdi-mushroom.png` 草地上的红蘑菇 |
+| <img src="https://cdn.jsdelivr.net/gh/sqs404/dsh-gdi-art-plugins@main/examples/gdi-landscape.png" width="256" alt="gdi-landscape"> | `gdi-landscape.png` 房子、太阳、树的风景 |
 
 **像素画引擎（旧版，已被 `draw_gdi` 取代，16×16 放大）**
 
 | 图片 | 说明 |
 |---|---|
-| [pixel-dog.png](examples/pixel-dog.png) | 像素小狗 |
-| [pixel-cat.png](examples/pixel-cat.png) | 像素小猫 |
-| [pixel-person.png](examples/pixel-person.png) | 像素小人 |
-| [pixel-mushroom.png](examples/pixel-mushroom.png) | 像素蘑菇 |
+| <img src="https://cdn.jsdelivr.net/gh/sqs404/dsh-gdi-art-plugins@main/examples/pixel-dog.png" width="256" alt="pixel-dog"> | `pixel-dog.png` 像素小狗 |
+| <img src="https://cdn.jsdelivr.net/gh/sqs404/dsh-gdi-art-plugins@main/examples/pixel-cat.png" width="256" alt="pixel-cat"> | `pixel-cat.png` 像素小猫 |
+| <img src="https://cdn.jsdelivr.net/gh/sqs404/dsh-gdi-art-plugins@main/examples/pixel-person.png" width="256" alt="pixel-person"> | `pixel-person.png` 像素小人 |
+| <img src="https://cdn.jsdelivr.net/gh/sqs404/dsh-gdi-art-plugins@main/examples/pixel-mushroom.png" width="256" alt="pixel-mushroom"> | `pixel-mushroom.png` 像素蘑菇 |
+
+> 图片通过 jsDelivr CDN 从本仓库加载（`raw.githubusercontent.com` 在部分网络下不可达）。原图也可在 [examples/](examples/) 目录中查看。
 
 ## 工作原理与安全提示
 
