@@ -1,4 +1,4 @@
-# DSH GDI+ 文生图插件（让 DeepSeek V4 Flash 自己可以文生图）
+# DSH 文生图插件（让 DeepSeek V4 Flash 自己可以文生图）
 
 > ## ⭐ 核心亮点：不依赖任何其他大模型，即可让 deepseek-v4-flash 文生图
 >
